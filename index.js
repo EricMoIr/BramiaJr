@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const { token, prefix, defaultChannels } = require("./config");
 const { commands } = require("./commands");
+const http = require("http");
 
 const client = new Discord.Client();
 
@@ -28,3 +29,7 @@ const init = async () => {
 }
 
 init();
+
+let interval = setInterval(() => {
+    http.get("http://bramiajr.herokuapp.com");
+}, 300000)
