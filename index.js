@@ -32,4 +32,4 @@ init();
 
 let interval = setInterval(() => {
     http.get("http://bramiajr.herokuapp.com");
-}, 300000)
+}, 200000)
