@@ -1,28 +1,29 @@
 const Discord = require("discord.js");
-const { token } = require("./config.js");
+const { token, prefix, defaultChannels } = require("./config");
+const { commands } = require("./commands");
 
 const client = new Discord.Client();
 
 const init = async () => {
     client.on("guildMemberAdd", ({ guild, user }) => {
-        for (const channel of guild.channels) {
-            if (channel[1].type === "text" && channel[1].permissionsFor(guild.me).has("SEND_MESSAGES")) {
-                channel[1].send(`${user} has joined the server`);
-                break;
-            }
-        }
-        
+        if (defaultChannels[guild.id])
+            defaultChannels[guild.id].send(`${user} has joined the server`);
     });
 
     client.on("guildMemberRemove", ({ guild, user }) => {
-        for (const channel of guild.channels) {
-            if (channel[1].type === "text" && channel[1].permissionsFor(guild.me).has("SEND_MESSAGES")) {
-                channel[1].send(`${user} has left the server`);
-                break;
+        if (defaultChannels[guild.id])
+            defaultChannels[guild.id].send(`${user} has left the server`);
+    });
+
+    client.on("message", async (message) => {
+        for(let i=commands.length-1; i>-1; i--) {
+            if (message.content.startsWith(`${prefix}${commands[i].name}`)) {
+                await commands[i].execute(message);
+                return;
             }
         }
-        
-    });
+    })
+
     client.login(token);
 }
 
