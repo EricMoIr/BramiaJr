@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 const { token, prefix, defaultChannels } = require("./config");
 const { commands } = require("./commands");
-const http = require("http");
 
 const client = new Discord.Client();
 
@@ -13,7 +12,7 @@ const init = async () => {
 
     client.on("guildMemberRemove", ({ guild, user }) => {
         if (defaultChannels[guild.id])
-            defaultChannels[guild.id].send(`${user} has left the server`);
+            defaultChannels[guild.id].send(`${user.username} has left the server`);
     });
 
     client.on("message", async (message) => {
@@ -29,7 +28,3 @@ const init = async () => {
 }
 
 init();
-
-let interval = setInterval(() => {
-    http.get("http://bramiajr.herokuapp.com");
-}, 200000)
