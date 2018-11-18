@@ -5,18 +5,38 @@
   "main": "index.js",
   "dependencies": {
     "discord.js": "^11.4.2",
+    "module-alias": "^2.1.0",
     "mongodb": "^3.1.10",
     "mongoose": "^5.3.12"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node .\\src\\index.js"
   },
+  "_moduleDirectories": [
+    "./src"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/EricMoIr/BramiaJr.git"
   },
   "author": "EricMoIr",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "debug": "^4.1.0",
+    "doctrine": "^3.0.0",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-config-react-app": "^3.0.5",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1",
+    "prettier": "^1.15.2",
+    "prettierrc": "^0.0.0-5",
+    "trim-right": "^1.0.1"
+  }
 }

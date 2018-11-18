@@ -1,5 +1,5 @@
-const { getParams } = require("./util");
-const store = require("./store");
+const { getParams } = require("util");
+const store = require("store");
 
 const help = {
     name: "help",
