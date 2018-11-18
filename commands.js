@@ -1,5 +1,5 @@
-const { defaultChannels } = require("./config");
 const { getParams } = require("./util");
+const store = require("./store");
 
 const help = {
     name: "help",
@@ -42,7 +42,7 @@ const setChannel = {
                         await message.reply("I can't send messages in that channel");
                         return;
                     }
-                    defaultChannels[message.guild.id] = channel[1];
+                    await store.setDefaultChannel(message.guild.id, channel[1]);
                     await message.reply(`Setting ${channel[1]} for welcome and leaving messages`);
                     return;
                 }
@@ -57,7 +57,7 @@ const setChannel = {
                         await message.reply("I can't send messages in that channel");
                         return;
                     }
-                    defaultChannels[message.guild.id] = channel[1];
+                    await store.setDefaultChannel(message.guild.id, channel[1]);
                     await message.reply(`Setting ${channel[1]} for welcome and leaving messages`);
                     return;
                 }
