@@ -44,17 +44,9 @@ exports.getGuild = (id) => {
 }
 
 const setDefaultChannel = async (guildId, channel) => {
-    console.log(1234)
     const guild = await Guild.findOne({id: guildId});
     guild.defaultChannelId = channel.id;
     await guild.save();
-    var a = {}
-    a.default = channel;
-    cache.guilds[guildId].defaultChannel = channel;
-    await channel.send("test");
-    await a.default.send("test2");
-    await cache.guilds[guildId].defaultChannel.send("test3");
-    console.log(cache.guilds[guildId])
 }
 
 exports.setDefaultChannel = setDefaultChannel;
