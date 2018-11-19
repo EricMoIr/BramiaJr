@@ -6,15 +6,19 @@ const cache = {
 const { MONGO_STRING } = process.env;
 
 exports.connect = () => {
-    mongoose.set("useCreateIndex", true);
-    mongoose.connect(MONGO_STRING);
-    mongoose.connection.on("error", (err) => {
-        console.error(err);
-        console.log("Couldn't connect to MongoDB");
-    });
+    return new Promise((resolve) => {
+        mongoose.set("useCreateIndex", true);
+        mongoose.connect(MONGO_STRING);
 
-    mongoose.connection.on("connected", async () => {
-        console.log("Mongo connection was established");
-    });
+        mongoose.connection.on("error", (error) => {
+            console.error(error);
+            console.log("Couldn't connect to MongoDB");
+        });
+
+        mongoose.connection.on("connected", () => {
+            console.log("Mongo connection was established");
+            resolve();
+        });
+    })
 };
 exports.cache = cache;
