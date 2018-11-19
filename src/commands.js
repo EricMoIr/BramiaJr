@@ -32,11 +32,8 @@ const ranking = {
     description: "ranking shows the server members ranked by activity",
     execute: async (message) => {
         const users = await userService.getMostActiveUsers(message.guild.id);
-        let content = 
-        `Server ranking
-        Rank | Name | Score
-        
-        `;
+        let content = `Server ranking
+Rank | Name | Score\n\n`;
         users.forEach((user, i) => {
             content += `#${i+1}: ${user.username} | ${user.points} points`, `#${i}: ${user.username} | ${user.points} points\n`;
         });

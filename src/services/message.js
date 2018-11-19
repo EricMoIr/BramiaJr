@@ -16,7 +16,7 @@ const handleMessage = async (message) => {
         author,
         time: new Date()
     }
-    let user = await userService.get(message.author.id);
+    let user = await userService.get(message.author.id, message.guild.id);
     if (!user) {
         user = await userService.create(author);
     } 
@@ -32,7 +32,7 @@ const getPoints = (message) => {
 
 const saveMessages = async () => {
     for(const userId in cache.messages) {
-        const author = await userService.get(userId);
+        const author = await userService.get(userId, cache.messages[userId].author.server);
         const message = cache.messages[userId];
         message.author = author;
         await Message.create(message);

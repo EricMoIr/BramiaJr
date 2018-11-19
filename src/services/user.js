@@ -1,7 +1,7 @@
 const User = require("models/user");
 
-const get = async (id) => {
-    return await User.findOne({ id });
+const get = async (id, serverId) => {
+    return await User.findOne({ id, server: serverId });
 }
 const create = async (user) => {
     return await User.create(user);
