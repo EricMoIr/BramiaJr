@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 
-const cache = {};
+const cache = {
+    guilds: [],
+};
 const { MONGO_STRING } = process.env;
 
 exports.connect = () => {

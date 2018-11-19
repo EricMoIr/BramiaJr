@@ -3,7 +3,7 @@ const { cache } = require("store");
 
 const getGuilds = async () => {
     try {
-        if (cache.guilds) {
+        if (cache.guilds && cache.guilds.length > 0) {
             return cache.guilds;
         }
         
@@ -24,7 +24,7 @@ const getGuild = (id) => {
     if (cache.guilds && cache.guilds[id]){
         return cache.guilds[id];
     }
-
+    console.error("Couldn't find the guild "+id);
     return null;
 }
 const addGuild = async (id, name) => {
