@@ -1,28 +1,28 @@
 const Guild = require("models/guild");
-let { guilds } = require("store").cache;
+const { cache } = require("store");
 
 const getGuilds = async () => {
     try {
-        if (guilds) {
-            return guilds;
+        if (cache.guilds) {
+            return cache.guilds;
         }
         
         const dbGuilds = await Guild.find();
-        guilds = dbGuilds.reduce((result, guild) => {
+        cache.guilds = dbGuilds.reduce((result, guild) => {
             return {
                 ...result,
                 [guild.id]: guild
             }
         }, {});
-        return guilds;
+        return cache.guilds;
     } catch(error) {
         console.error(error);
         return { error };
     }
 }
 const getGuild = (id) => {
-    if (guilds && guilds[id]){
-        return guilds[id];
+    if (cache.guilds && cache.guilds[id]){
+        return cache.guilds[id];
     }
 
     return null;
@@ -46,6 +46,7 @@ const setDefaultChannel = async (guildId, channel) => {
     const guild = await Guild.findOne({id: guildId});
     guild.defaultChannelId = channel.id;
     await guild.save();
+    cache.guilds[guildId].defaultChannel = channel;
 }
 const updateGuilds = async (guilds) => {
     const dbGuilds = await getGuilds();
@@ -65,9 +66,17 @@ const updateGuilds = async (guilds) => {
         }
     }
 }
+const hasDefaultChannel = (guildId) => {
+    return getGuild(guildId).defaultChannel !== null;
+}
+const sendToDefaultChannel = async (guildId, message) => {
+    await getGuild(guildId).defaultChannel.send(message);
+}
 
 exports.getGuilds = getGuilds;
 exports.getGuild = getGuild;
 exports.addGuild = addGuild;
 exports.setDefaultChannel = setDefaultChannel;
 exports.updateGuilds = updateGuilds;
+exports.sendToDefaultChannel = sendToDefaultChannel;
+exports.hasDefaultChannel = hasDefaultChannel;

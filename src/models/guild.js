@@ -8,6 +8,6 @@ const guildSchema = new Schema({
     leftServer: { type: Boolean, default: false },
 }, {timestamps: true});
 
-guildSchema.index({guildId: 1}, {unique: true});
+guildSchema.index({id: 1}, {unique: true});
 
 module.exports = mongoose.model('Guild', guildSchema);

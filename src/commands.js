@@ -1,11 +1,12 @@
-const { getParams } = require("util");
-const store = require("store");
+const util = require("discordUtil");
+const guildService = require("services/guild");
+const Discord = require("discord.js");
 
 const help = {
     name: "help",
     description: "help shows information about other commands",
     execute: async (message) => {
-        const params = getParams(message);
+        const params = util.getParams(message);
 
         if (!Array.isArray(params) || params.length === 0) {
             await message.reply("help should be followed by a command. Example: help setchannel");
@@ -23,11 +24,25 @@ const help = {
     }
 }
 
+const ranking = {
+    name: "ranking",
+    description: "ranking shows the server members ranked by activity",
+    execute: async (message) => {
+        const users = activityService.getMostActiveMembers(message.guild.id);
+        const embed = new Discord.RichEmbed().setTitle('Server Ranking');
+        users.forEach((user, i) => {
+            embed.addField("", `#${i}: ${user.username} | ${user.points} points`);
+        });
+        
+        await message.channel.send(embed);
+    }
+}
+
 const setChannel = {
     name: "setchannel",
     description: "setchannel sets the default channel where I should send welcome/leaving messages",
     execute: async (message) => {
-        const params = getParams(message);
+        const params = util.getParams(message);
 
         if (params.length === 0) {
             await message.reply(`setchannel should be followed by the name of the channel. Example: setchannel ${message.channel}`);
@@ -42,7 +57,7 @@ const setChannel = {
                         await message.reply("I can't send messages in that channel");
                         return;
                     }
-                    await store.setDefaultChannel(message.guild.id, channel[1]);
+                    await guildService.setDefaultChannel(message.guild.id, channel[1]);
                     await message.reply(`Setting ${channel[1]} for welcome and leaving messages`);
                     return;
                 }
@@ -57,7 +72,7 @@ const setChannel = {
                         await message.reply("I can't send messages in that channel");
                         return;
                     }
-                    await store.setDefaultChannel(message.guild.id, channel[1]);
+                    await guildService.setDefaultChannel(message.guild.id, channel[1]);
                     await message.reply(`Setting ${channel[1]} for welcome and leaving messages`);
                     return;
                 }
