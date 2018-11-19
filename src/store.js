@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const cache = {
     guilds: {},
+    messages: {}
 };
 const { MONGO_STRING } = process.env;
 

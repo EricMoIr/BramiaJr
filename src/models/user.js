@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     id: {type: String, required: true},
     username: {type: String, required: true},
-    points: Number,
+    server: {type: String, required: true},
+    points: {type: Number, default: 0},
 }, {timestamps: true});
 
 userSchema.index({id: 1}, {unique: true});

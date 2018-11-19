@@ -1,6 +1,9 @@
+const Discord = require("discord.js");
+
 const util = require("discordUtil");
 const guildService = require("services/guild");
-const Discord = require("discord.js");
+const userService = require("services/user");
+const messageService = require("services/message");
 
 const help = {
     name: "help",
@@ -9,7 +12,7 @@ const help = {
         const params = util.getParams(message);
 
         if (!Array.isArray(params) || params.length === 0) {
-            await message.reply("help should be followed by a command. Example: help setchannel");
+            await message.reply("help should be followed by a command. Usage: help setchannel");
             return;
         }
 
@@ -20,7 +23,7 @@ const help = {
             }
         }
         
-        await message.reply("help should be followed by a command. Example: help setchannel");
+        await message.reply("help should be followed by a command. Usage: help setchannel");
     }
 }
 
@@ -28,13 +31,17 @@ const ranking = {
     name: "ranking",
     description: "ranking shows the server members ranked by activity",
     execute: async (message) => {
-        const users = activityService.getMostActiveMembers(message.guild.id);
-        const embed = new Discord.RichEmbed().setTitle('Server Ranking');
+        const users = await userService.getMostActiveUsers(message.guild.id);
+        let content = 
+        `Server ranking
+        Rank | Name | Score
+        
+        `;
         users.forEach((user, i) => {
-            embed.addField("", `#${i}: ${user.username} | ${user.points} points`);
+            content += `#${i+1}: ${user.username} | ${user.points} points`, `#${i}: ${user.username} | ${user.points} points\n`;
         });
         
-        await message.channel.send(embed);
+        await message.channel.sendMessage(content, { code: true });
     }
 }
 
@@ -45,7 +52,7 @@ const setChannel = {
         const params = util.getParams(message);
 
         if (params.length === 0) {
-            await message.reply(`setchannel should be followed by the name of the channel. Example: setchannel ${message.channel}`);
+            await message.reply(`setchannel should be followed by the name of the channel. Usage: setchannel ${message.channel}`);
             return;
         }
 
@@ -82,10 +89,19 @@ const setChannel = {
     }
 }
 
-const commands = [
-    setChannel
+const saveMessages = {
+    name: "saveMessages",
+    description: "You shouldn't be seeing this",
+    execute: async () => {
+        await messageService.saveMessages();
+    }
+}
+
+const commandsList = [
+    setChannel,
+    ranking
 ];
 
 module.exports = {
-    commands: [help, ...commands]
+    commands: [help, saveMessages, ...commandsList]
 }

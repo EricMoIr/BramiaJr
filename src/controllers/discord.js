@@ -1,6 +1,6 @@
 const { commands } = require("commands");
 const guildService = require("services/guild");
-const activityService = require("services/activity");
+const messageService = require("services/message");
 const { PREFIX } = process.env;
 
 
@@ -24,7 +24,7 @@ exports.guildMemberRemove = async ({ guild, user }) => {
 }
 
 exports.message = async (message) => {
-    activityService.handleMessage(message);
+    messageService.handleMessage(message);
     for(let i=commands.length-1; i>-1; i--) {
         if (message.content.startsWith(`${PREFIX}${commands[i].name}`)) {
             await commands[i].execute(message);
