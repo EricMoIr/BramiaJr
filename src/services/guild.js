@@ -49,6 +49,7 @@ const setDefaultChannel = async (guildId, channel) => {
     cache.guilds[guildId].defaultChannel = channel;
 }
 const updateGuilds = async (guilds) => {
+    console.log(guilds);
     const dbGuilds = await getGuilds();
     for(const id in dbGuilds) {
         if (!guilds.has(id)) {
