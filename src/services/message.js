@@ -32,10 +32,11 @@ const getPoints = (message) => {
 
 const saveMessages = async () => {
     for(const userId in cache.messages) {
-        const author = await userService.get(userId, cache.messages[userId].author.server);
-        const message = cache.messages[userId];
-        message.author = author;
-        await Message.create(message);
+        const author = await userService.get(userId, cache.messages[userId][0].author.server);
+        cache.messages[userId].forEach(async (message) => {
+            message.author = author;
+            await Message.create(message);
+        });
     }
 }
 

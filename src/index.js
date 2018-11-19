@@ -16,7 +16,11 @@ const init = async () => {
     client.on("message", discordController.message);
     client.on("ready", () => discordController.ready(client));
 
-    client.login(DISCORD_TOKEN);
+    try {
+        await client.login(DISCORD_TOKEN);
+    } catch(error) {
+        console.error("Couldn't connect to discord");
+    }
 };
 
 init();

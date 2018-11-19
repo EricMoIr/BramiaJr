@@ -8,6 +8,4 @@ const messageSchema = new Schema({
     time: {type: Date, default: 0},
 }, {timestamps: true});
 
-messageSchema.index({id: 1}, {unique: true});
-
 module.exports = mongoose.model('Message', messageSchema);
