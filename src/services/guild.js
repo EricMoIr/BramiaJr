@@ -29,14 +29,19 @@ const getGuild = (id) => {
 }
 const addGuild = async (id, name) => {
     try {
-        const guild = {
+        let guild = await Guild.findOne({id});
+        if (guild) {
+            console.log(`The guild ${id}: ${name} already exists`);
+            return;
+        }
+        guild = {
             id,
             name,
             defaultChannelId: null,
             leftServer: false
         };
         await Guild.create(guild);
-        cache.guilds.push({[id]: guild});
+        cache.guilds[id]= guild;
     } catch (error) {
         console.error(error);
         return { error };
@@ -49,7 +54,6 @@ const setDefaultChannel = async (guildId, channel) => {
     cache.guilds[guildId].defaultChannel = channel;
 }
 const updateGuilds = async (guilds) => {
-    console.log(guilds);
     const dbGuilds = await getGuilds();
     for(const id in dbGuilds) {
         if (!guilds.has(id)) {
