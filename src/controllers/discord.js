@@ -37,3 +37,12 @@ exports.ready = async (client) => {
     await guildService.updateGuilds(client.guilds);
     console.log("Bot is ready");
 }
+
+exports.disconnect = async (event, client, token) => {
+    try {
+        console.error("Was disconnected from discord");
+        await client.login(token);
+    } catch(error) {
+        console.error("Couldn't connect to discord");
+    }
+}

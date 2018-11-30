@@ -15,6 +15,7 @@ const init = async () => {
     client.on("guildMemberRemove", discordController.guildMemberRemove);
     client.on("message", discordController.message);
     client.on("ready", () => discordController.ready(client));
+    client.on("disconnect", (event) => discordController.disconnect(event, client, DISCORD_TOKEN));
 
     try {
         await client.login(DISCORD_TOKEN);

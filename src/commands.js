@@ -35,10 +35,10 @@ const ranking = {
         let content = `Server ranking
 Rank | Name | Score\n\n`;
         users.forEach((user, i) => {
-            content += `#${i+1}: ${user.username} | ${user.points} points`, `#${i}: ${user.username} | ${user.points} points\n`;
+            content += `#${i+1}: ${user.username} | ${user.points} points\n`;
         });
         
-        await message.channel.sendMessage(content, { code: true });
+        await message.channel.send(content, { code: true });
     }
 }
 
