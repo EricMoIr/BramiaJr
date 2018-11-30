@@ -35,6 +35,11 @@ exports.message = async (message) => {
 
 exports.ready = async (client) => {
     await guildService.updateGuilds(client.guilds);
+    await client.user.setPresence({
+        game: {
+            name: "$help"
+        }
+    });
     console.log("Bot is ready");
 }
 
