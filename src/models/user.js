@@ -8,6 +8,6 @@ const userSchema = new Schema({
     points: {type: Number, default: 0},
 }, {timestamps: true});
 
-userSchema.index({id: 1}, {unique: true});
+userSchema.index({id: 1, server: 1}, {unique: true});
 
 module.exports = mongoose.model('User', userSchema);

@@ -2,7 +2,7 @@ require("module-alias/register");
 require('dotenv').config()
 const Discord = require("discord.js");
 
-const store = require("store");
+const store = require("persistence/store");
 const discordController = require("controllers/discord");
 const { DISCORD_TOKEN } = process.env;
 

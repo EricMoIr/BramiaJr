@@ -1,4 +1,4 @@
-const { cache } = require("store");
+const { cache } = require("persistence/store");
 const userService = require("services/user")
 const Message = require("models/message")
 

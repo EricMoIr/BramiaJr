@@ -1,5 +1,5 @@
 const Guild = require("models/guild");
-const { cache } = require("store");
+const { cache } = require("persistence/store");
 
 const getGuilds = async () => {
     try {

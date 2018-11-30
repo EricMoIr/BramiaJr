@@ -1,5 +1,3 @@
-const Discord = require("discord.js");
-
 const util = require("discordUtil");
 const guildService = require("services/guild");
 const userService = require("services/user");
