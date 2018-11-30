@@ -38,6 +38,7 @@ const saveMessages = async () => {
             await Message.create(message);
         });
     }
+    cache.messages = {};
 }
 
 const isCooldownOver = (authorId) => {
