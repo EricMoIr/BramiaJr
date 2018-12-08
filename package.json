@@ -2,8 +2,11 @@
   "name": "bramiajr",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "dependencies": {
+    "@babel/polyfill": "^6.26.0",
+    "@types/mongoose": "^5.3.3",
+    "chalk": "^2.4.1",
     "discord.js": "^11.4.2",
     "dotenv": "^6.1.0",
     "module-alias": "^2.1.0",
@@ -11,12 +14,15 @@
     "mongoose": "^5.3.12"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/index.js",
-    "lifeGuard": "node ./src/persistence/lifeGuard.js"
+    "start": "node ./dist/index.js",
+    "lifeGuard": "node ./src/persistence/lifeGuard.js",
+    "lint": "tslint 'src/**/*.ts'",
+    "build": "yarn tsc && yarn babel",
+    "tsc": "tsc",
+    "babel": "babel src --out-dir dist --extensions \".ts,.tsx\" --source-maps inline"
   },
   "_moduleDirectories": [
-    "./src"
+    "./dist"
   ],
   "repository": {
     "type": "git",
@@ -25,7 +31,14 @@
   "author": "EricMoIr",
   "license": "ISC",
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/node": "^10.12.12",
+    "babel-plugin-transform-regenerator": "^6.26.0",
     "debug": "^4.1.0",
     "doctrine": "^3.0.0",
     "eslint": "^5.9.0",
@@ -39,6 +52,7 @@
     "eslint-plugin-react": "^7.11.1",
     "prettier": "^1.15.2",
     "prettierrc": "^0.0.0-5",
-    "trim-right": "^1.0.1"
+    "trim-right": "^1.0.1",
+    "typescript": "^3.2.1"
   }
 }
