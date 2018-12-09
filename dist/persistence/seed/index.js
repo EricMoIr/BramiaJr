@@ -1,0 +1,10 @@
+"use strict";
+
+require("module-alias/register");
+
+require("@babel/polyfill");
+
+require("dotenv").config();
+
+require("./seed");
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9wZXJzaXN0ZW5jZS9zZWVkL2luZGV4LnRzIl0sIm5hbWVzIjpbInJlcXVpcmUiLCJjb25maWciXSwibWFwcGluZ3MiOiI7O0FBQUFBLE9BQU8sQ0FBQyx1QkFBRCxDQUFQOztBQUNBQSxPQUFPLENBQUMsaUJBQUQsQ0FBUDs7QUFDQUEsT0FBTyxDQUFDLFFBQUQsQ0FBUCxDQUFrQkMsTUFBbEI7O0FBQ0FELE9BQU8sQ0FBQyxRQUFELENBQVAiLCJzb3VyY2VzQ29udGVudCI6WyJyZXF1aXJlKFwibW9kdWxlLWFsaWFzL3JlZ2lzdGVyXCIpO1xyXG5yZXF1aXJlKFwiQGJhYmVsL3BvbHlmaWxsXCIpO1xyXG5yZXF1aXJlKFwiZG90ZW52XCIpLmNvbmZpZygpO1xyXG5yZXF1aXJlKFwiLi9zZWVkXCIpOyJdfQ==
