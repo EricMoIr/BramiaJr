@@ -17,9 +17,9 @@
     "start": "node ./dist/index.js",
     "lifeGuard": "node ./src/persistence/lifeGuard.js",
     "lint": "tslint 'src/**/*.ts'",
-    "build": "yarn tsc && yarn babel",
+    "build": "yarn babel",
     "tsc": "tsc",
-    "babel": "babel src --out-dir dist --extensions \".ts,.tsx\" --source-maps inline"
+    "babel": "babel src --out-dir dist --extensions \".ts\" --source-maps inline"
   },
   "_moduleDirectories": [
     "./dist"
@@ -38,6 +38,7 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-typescript": "^7.1.0",
     "@types/node": "^10.12.12",
+    "babel-eslint": "^10.0.1",
     "babel-plugin-transform-regenerator": "^6.26.0",
     "debug": "^4.1.0",
     "doctrine": "^3.0.0",
