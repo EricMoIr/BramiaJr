@@ -1,0 +1,15 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  my_permissions: "I don't have enough permissions for that",
+  your_permissions: "You don't have enough permissions for that",
+  meeting_missing_params: function meeting_missing_params(prefix) {
+    return "".concat(prefix, "meeting should be followed by parameters. For example, ").concat(prefix, "meeting starts unlocks the meeting channel and ").concat(prefix, "meeting in <channel_name> sets <channel_name> to be the meeting channel, locking it until a meeting starts");
+  }
+};
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9tZXNzYWdlcy9tZXNzYWdlcy50cyJdLCJuYW1lcyI6WyJteV9wZXJtaXNzaW9ucyIsInlvdXJfcGVybWlzc2lvbnMiLCJtZWV0aW5nX21pc3NpbmdfcGFyYW1zIiwicHJlZml4Il0sIm1hcHBpbmdzIjoiOzs7Ozs7ZUFBZTtBQUNYQSxFQUFBQSxjQUFjLEVBQUUsMENBREw7QUFFWEMsRUFBQUEsZ0JBQWdCLEVBQUUsNENBRlA7QUFHWEMsRUFBQUEsc0JBQXNCLEVBQUUsZ0NBQUNDLE1BQUQ7QUFBQSxxQkFBZUEsTUFBZixvRUFBK0VBLE1BQS9FLDREQUF1SUEsTUFBdkk7QUFBQTtBQUhiLEMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgZGVmYXVsdCB7XHJcbiAgICBteV9wZXJtaXNzaW9uczogXCJJIGRvbid0IGhhdmUgZW5vdWdoIHBlcm1pc3Npb25zIGZvciB0aGF0XCIsXHJcbiAgICB5b3VyX3Blcm1pc3Npb25zOiBcIllvdSBkb24ndCBoYXZlIGVub3VnaCBwZXJtaXNzaW9ucyBmb3IgdGhhdFwiLFxyXG4gICAgbWVldGluZ19taXNzaW5nX3BhcmFtczogKHByZWZpeCkgPT4gYCR7cHJlZml4fW1lZXRpbmcgc2hvdWxkIGJlIGZvbGxvd2VkIGJ5IHBhcmFtZXRlcnMuIEZvciBleGFtcGxlLCAke3ByZWZpeH1tZWV0aW5nIHN0YXJ0cyB1bmxvY2tzIHRoZSBtZWV0aW5nIGNoYW5uZWwgYW5kICR7cHJlZml4fW1lZXRpbmcgaW4gPGNoYW5uZWxfbmFtZT4gc2V0cyA8Y2hhbm5lbF9uYW1lPiB0byBiZSB0aGUgbWVldGluZyBjaGFubmVsLCBsb2NraW5nIGl0IHVudGlsIGEgbWVldGluZyBzdGFydHNgLFxyXG59Il19
