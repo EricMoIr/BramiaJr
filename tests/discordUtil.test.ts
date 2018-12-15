@@ -62,5 +62,5 @@ it("Find Channel in map by snowflake", () => {
     channels.set("test1", new MockedChannel1());
     channels.set("1234567890", new MockedChannel());
 
-    expect(util.findChannel("<1234567890>", channels).id).toEqual("1234567890");
+    expect(util.findChannel("<#1234567890>", channels).id).toEqual("1234567890");
 });
