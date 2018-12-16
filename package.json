@@ -20,7 +20,7 @@
     "test": "jest",
     "lint": "tslint 'src/**/*.ts'",
     "build": "yarn babel",
-    "tsc": "tsc",
+    "brun": "yarn build && yarn start",
     "seed": "node ./dist/persistence/seed/index.js",
     "babel": "babel src --out-dir dist --extensions \".ts\" --source-maps inline"
   },
