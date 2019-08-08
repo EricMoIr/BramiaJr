@@ -4,5 +4,5 @@
 *.log
 jsconfig.*
 *lifeGuard.js
-/src
+/dist
 /compiled

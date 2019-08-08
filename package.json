@@ -19,6 +19,7 @@
     "lifeGuard": "node ./src/persistence/lifeGuard.js",
     "test": "jest",
     "lint": "tslint 'src/**/*.ts'",
+    "eslint": "eslint 'src/**/*.js' --fix",
     "build": "yarn babel",
     "brun": "yarn build && yarn start",
     "seed": "node ./dist/persistence/seed/index.js",
